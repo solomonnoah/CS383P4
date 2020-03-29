@@ -1,0 +1,33 @@
+
+The Story:
+
+This is the story of Young Scott.
+Young Scott was wise beyond his years, but was persecuted for his wisdom. Young Scott worked hard to preserve his wisdom as written word, but society wasn’t ready. Tragically, Young Scott’s words were tracked down and burned. What’s worse, Young Scott’s wisdom has faded from his head with age, and try as he might he cannot write down any of the wisdom he once had.
+For a time, society progressed. The world moved on relatively successfully even without Young Scott’s wisdom. In this time of crisis, however, the world needs whatever help it can get. As luck (or really, Young Scott’s wisdom) would have it, Young Scott hid some of his writings using steganography. You have the opportunity to uncover this untold wisdom and use it to save the world.
+
+Good luck.
+
+The logistics:
+
+This project is different from the previous ones, in that it is released in stages. The first stage of release is this document. The second stage will contain a collection of files and a set of questions. Your task is to answer those questions by finding secret messages within the files.
+While messages hidden in images will make up the bulk of this assignment, you should be ready to apply other techniques used in class.
+For example, you may stumble upon passwords to be cracked, programs to reverse engineer, etc..
+In coming up with your plan, you should write code.
+If you wait until the files are released, you will have a great deal of work ahead of you in finding the hidden messages. Take the time you have now to write utilities that will help you detect and decode messages.
+
+
+Sample Files:
+
+In the following images, messages are stored in the following scheme:
+
+For text messages:
+- The least significant bit of the red, green, and blue channels are used to encode the message.
+- The first 32 hidden bits serve is a header. They are interpreted as an unsigned int in Big Endian. This tells you the number of character in the message.
+- Following the header, each character (a byte) is hidden in order of the original message.
+
+For images:
+- The least significant bit of the red, green, and blue channels are used to encode the image.
+- The first 64 hidden bits serve as a header. The first 32 encode the height of the hidden image as an unsigned int in Big Endian. The next 32 encode the width of the hidden image.
+- Pixels are then stored left-to-right, top-to-bottom order (how you read text in English).
+Note:
+The images coming later may not (will not) all be encoded in this format. You should be ready to detect and decode messages hidden in other, as-of-yet unknown formats.
